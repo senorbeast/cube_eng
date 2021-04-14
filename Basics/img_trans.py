@@ -23,9 +23,19 @@ def rotate(img, angle, rotPoint=None):
 
 
 img = cv.imread("Images/Rubiks_1.jpeg")
+img = rescaleFrame(img)
+# Resizing
+resized = cv.resize(img, (500, 500), interpolation=cv.INTER_CUBIC)
+
+# Flipping (Upside-Down and Mirror Images)
+flip = cv.flip(img, 0)
+
+# Crop (Somewhat like list slicing but here coordinates are needed)
+cropped = img[200:400, 300:400]
 
 rotated = rotate(img, 45)
+rot_rot = rotate(rotated, 45)
 translated = translate(img, 50, 50)
-resized = rescaleFrame(rotated)
-cv.imshow("Cube", resized)
+
+cv.imshow("Cube", rot_rot)
 cv.waitKey(0)

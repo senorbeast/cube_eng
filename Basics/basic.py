@@ -2,7 +2,7 @@ import cv2 as cv
 import read
 
 img = cv.imread("Images/Rubiks_1.jpeg")
-
+img = read.rescaleFrame(img, 0.5)
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 # Blur
@@ -22,10 +22,8 @@ reCR = read.rescaleFrame(eroded, 0.7)
 #cv.imshow("Eroded", reCR)
 
 # Cropped Image
-cropped = img[50:200, 200:400]
+#cropped = img[50:200, 200:400]
 
 # Showing image
-resized = read.rescaleFrame(dilated, 0.7)
-cv.imshow("Dilated", cropped)
 cv.imshow("Original", img)
 cv.waitKey(0)
